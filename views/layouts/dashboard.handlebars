@@ -19,8 +19,8 @@
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/dashboard">Dashboard</a> 
-        <a href="/home">Home</a> 
+        <a href="/dashboard">Dashboard</a>
+        <a href="/home">Home</a>
         <button class="no-button" id="logout">logout</button>
         {{else}}
         <a href="/login">login</a>
@@ -32,14 +32,20 @@
       <!-- Render the sub layout -->
       {{{ body }}}
     </main>
-    <footer>
-      <a href="dashboard/new">New Post</a> 
-    </footer>
+    <section>
+      <h2>Create New Post</h2>
+      <label for="title">Title</label>
+      <input id="title">
+      <label for="body">Body</label>
+      <textarea id="body"></textarea>
+      <button id="submit">Create Post</button>
+    </section>
   </div>
 
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
+  <script src="/js/new.js"></script>
   {{/if}}
 </body>
 
