@@ -21,10 +21,10 @@ router.get('/dashboard', async (req, res) => {
       include: [User]
     })
     const posts = dbPostData.map((post) => post.get({ plain: true }))
-    res.render('all-user-posts', { 
-      posts, 
+    res.render('all-user-posts', {
+      posts,
       layout: "dashboard",
-      logged_in: req.session.logged_in 
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -68,18 +68,21 @@ router.get('/', async (req, res) => {
 });
 //67-87 block is similar to what's needed to get all posts by id. reuse: dbPostData instead of postData
 router.get('/post/:id', async (req, res) => {
+  console.log("___Post___",req.params.id)
   try {
-    const postData = await Post.findByPk(req.params.id, {
-      include: [
-        {
-          model: User,
-          attributes: ['name'],
-        },
-      ],
-    });
+    const postData = await Post.findByPk(req.params.id)
+    // , {
+    //   include: [
+    //     {
+    //       model: User,
+    //       attributes: ['name'],
+    //     },
+    //   ],
+    // });
 
     const project = projectData.get({ plain: true });
-// won't need to reference any login/session info in lines 80-83
+    console.log('project -----', project)
+    // won't need to reference any login/session info in lines 80-83
     res.render('project', {
       ...project,
       logged_in: req.session.logged_in
