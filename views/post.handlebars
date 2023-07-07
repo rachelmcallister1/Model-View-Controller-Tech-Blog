@@ -1,0 +1,32 @@
+<div class="text-center">
+  <h2>{{post.title}}</h2>
+  <p>{{post.body}}</p>
+  <p>Created by {{user.name}} on {{format_date post.createdAt}}</p>
+  {{log this}}
+  <p>
+    <button class="btn btn-primary">Add Comment</button>
+  </p>
+  <div class="comments">
+    {{#each post.Comments}}
+    <div class="comment">
+      <p>{{body}}</p>
+      <p>Created by {{user.name}} on {{format_date createdAt}}</p>
+    </div>
+    {{/each}}
+</div>
+<form id="new-comment-form" class="card">
+    <div class="card-header">
+      <h3>Add New Comment</h3>
+    </div>
+
+    <div class="card-body">
+      <input type="hidden" name="post-id" value="{{post.id}}" />
+
+      <label class="form-label" for="comment-body">Comment</label>
+
+      <textarea name="comment-body" class="form-input"></textarea>
+
+      <button type="submit" class="btn">Add Comment</button>
+    </div>
+  </form>
+  <script src="/js/comment.js"></script>  
