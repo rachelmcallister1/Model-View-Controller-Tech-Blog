@@ -3,9 +3,9 @@
   <p>{{post.body}}</p>
   <p>Created by {{user.name}} on {{format_date post.createdAt}}</p>
   {{log this}}
-  <p>
+  {{!-- <p>
     <button class="btn btn-primary">Add Comment</button>
-  </p>
+  </p> --}}
   <div class="comments">
     {{#each post.Comments}}
     <div class="comment">
